@@ -2,6 +2,12 @@
 /*Add a slash at the beginning and end of adir[].
  The function first check if slash exists in adir[] and put one where necessary.
  */
+char *CreateFullPath(char path[], char *name) {
+  int path_size = strlen(path) + strlen(name) + 1;
+  char *exec_file = (char *) malloc(path_size * sizeof(char));
+  snprintf(exec_file, path_size, "%s%s", path, name);
+  return exec_file;
+}
 int AddSlash(char path[]) {
   int length;
   length = strlen(path);

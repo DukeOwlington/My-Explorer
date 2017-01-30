@@ -19,6 +19,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <time.h>  //for file info
 #include <unistd.h>    //exec
 
@@ -57,10 +59,9 @@ enum direction {
 
 Cursor SetCursor(int direction, int selection, Cursor c);
 int DrawList(Content *directories, Content *files, DirectoryStat dir_stat,
-             int item, WINDOW *w, int fromline);
+             char path[], int item, WINDOW *w, int fromline);
 DirectoryStat CreateList(Content *directories, Content *files, char path[]);
 int DrawFrame(WINDOW *frame, char *currentDir);
 int InitializeColors(void);
 Cursor InitializeCursor(Cursor cursor);
-
 #endif // FILEMANAGER_H_INCLUDED
